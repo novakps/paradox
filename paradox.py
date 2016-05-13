@@ -14,7 +14,8 @@ from tempfile import NamedTemporaryFile
 import xmlrpclib
 
 app = Flask(__name__)
-proc = subprocess.Popen(['/Applications/MacPyMOL.app/Contents/MacOS/MacPyMOL', '-R'])
+pymol_path = '/Applications/MacPyMOL.app/Contents/MacOS/MacPyMOL'
+proc = subprocess.Popen([pymol_path, '-R'])
 pymol = xmlrpclib.Server('http://localhost:9123/RPC2')
 
 @app.route('/dock', methods=['POST'])
